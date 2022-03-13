@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureApp.Android", "Fur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureApp.iOS", "FurnitureApp\FurnitureApp.iOS\FurnitureApp.iOS.csproj", "{5284E4F2-1C48-44C6-BE86-874A34FE7F50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureApp", "FurnitureApp\FurnitureApp\FurnitureApp.csproj", "{D4BCFD76-C5A1-492B-995C-54A9932110A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureApp", "FurnitureApp\FurnitureApp\FurnitureApp.csproj", "{D4BCFD76-C5A1-492B-995C-54A9932110A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{23C6564E-BE7E-4673-BAC8-EEC0F1DACD2A}"
+	ProjectSection(SolutionItems) = preProject
+		E:\Soft\_1c\OneDrive\MyDesktop\1\Screenshot_1.png = E:\Soft\_1c\OneDrive\MyDesktop\1\Screenshot_1.png
+		E:\Soft\_1c\OneDrive\MyDesktop\1\Screenshot_2.png = E:\Soft\_1c\OneDrive\MyDesktop\1\Screenshot_2.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
