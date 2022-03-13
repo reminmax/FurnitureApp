@@ -7,6 +7,9 @@ Replicating Furniture UI using Xamarin.Forms, FreshMVVM, gradients, shadows, cus
 * [Xamarin.CommunityToolkit](https://docs.microsoft.com/en-us/xamarin/community-toolkit/)
 * [FreshMvvm as MVVM library](https://github.com/rid00z/FreshMvvm)
 
+Design source:
+https://dribbble.com/shots/14904622-Furniture-Shop-Mobile-Apps
+
 ## Screenshots
 <table>
 <tbody>
