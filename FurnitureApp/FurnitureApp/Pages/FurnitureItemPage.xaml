@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="FurnitureApp.Pages.FurnitureItemPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:FurnitureApp.Helpers;assembly=FurnitureApp"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             NavigationPage.HasNavigationBar="false">
+
+    <Grid Margin="0,10,0,0"
+          ColumnDefinitions="50*,50*"
+          RowDefinitions="46,*,Auto">
+
+        <!-- Custom navigation bar -->
+        <Frame Grid.Row="0"
+               Grid.Column="0"
+               Margin="16,0"
+               Padding="8"
+               BackgroundColor="{StaticResource SecondaryColor}"
+               CornerRadius="16"
+               HorizontalOptions="Start">
+            <Label Margin="12,0"
+                   FontFamily="FontAwesomeRegular"
+                   FontSize="22"
+                   HorizontalOptions="Center"
+                   Text="{x:Static helpers:FontAwesomeIcons.ChevronLeft}"
+                   TextColor="{StaticResource PrimaryColor}"
+                   VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateBackCommand}"
+                                          NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+
+            </Label>
+        </Frame>
+
+        <Frame Grid.Row="0"
+               Grid.Column="1"
+               Margin="16,0"
+               Padding="8"
+               BackgroundColor="{StaticResource SecondaryColor}"
+               CornerRadius="50"
+               HorizontalOptions="End">
+            <Label Margin="6,0"
+                   FontFamily="FontAwesomeSolid"
+                   FontSize="22"
+                   HorizontalOptions="Center"
+                   Text="{x:Static helpers:FontAwesomeIcons.Heart}"
+                   TextColor="{StaticResource LightButtonBackgoundColor}"
+                   VerticalOptions="Center" />
+        </Frame>
+
+        <!-- Image -->
+        <Image Grid.Row="1"
+               Grid.ColumnSpan="2"
+               Margin="20,0,20,12"
+               Aspect="AspectFit"
+               Source="chair_01_1.png" />
+
+        <Frame Grid.Row="2"
+               Grid.ColumnSpan="2"
+               xct:CornerRadiusEffect.CornerRadius="44,44,0,0">
+            <Grid Margin="22,20,22,0"
+                  ColumnDefinitions="50*,50*"
+                  RowDefinitions="Auto,Auto,Auto,100,Auto,Auto,Auto">
+
+                <!-- Name -->
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       FontFamily="OpenSansBold"
+                       FontSize="20"
+                       Text="{Binding Name}" />
+
+                <!-- Maker -->
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       FontFamily="OpenSansRegular"
+                       FontSize="12"
+                       Text="{Binding FurnitureItem.Maker, StringFormat='by {0}'}"
+                       VerticalOptions="Start" />
+
+                <!-- Rating -->
+                <Frame Grid.RowSpan="2"
+                       Grid.Column="1"
+                       Padding="10"
+                       BackgroundColor="{StaticResource SecondaryColor}"
+                       BorderColor="{StaticResource ImageBackgroundColor}"
+                       CornerRadius="24"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Margin="6,0"
+                               FontFamily="FontAwesomeSolid"
+                               FontSize="22"
+                               HorizontalOptions="Center"
+                               Text="{x:Static helpers:FontAwesomeIcons.Star}"
+                               TextColor="{StaticResource RatingIconColor}"
+                               VerticalOptions="Center" />
+
+                        <Label Margin="0,0,6,0"
+                               FontFamily="OpenSansSemiBold"
+                               Text="{Binding FurnitureItem.Rating}"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+
+                </Frame>
+
+                <!-- Description -->
+                <Label Grid.Row="2"
+                       Grid.ColumnSpan="2"
+                       Margin="0,24"
+                       FontFamily="OpenSansRegular"
+                       FontSize="14"
+                       LineBreakMode="WordWrap"
+                       MaxLines="3"
+                       Text="{Binding Description}"
+                       TextColor="{StaticResource PlaceholderColor}" />
+
+                <!-- Images -->
+                <Grid Grid.Row="3"
+                      Grid.ColumnSpan="2"
+                      Margin="0,0,0,14"
+                      ColumnDefinitions="32*,32*,32*"
+                      ColumnSpacing="6">
+
+                    <!-- Image num 1 -->
+                    <Frame Grid.Column="0"
+                           Padding="12"
+                           BackgroundColor="{StaticResource ImageBackgroundColor}"
+                           CornerRadius="20">
+                        <Image Aspect="AspectFit"
+                               Source="{Binding Image1}" />
+                    </Frame>
+
+                    <!-- Image num 2 -->
+                    <Frame Grid.Column="1"
+                           Padding="12"
+                           BackgroundColor="{StaticResource ImageBackgroundColor}"
+                           CornerRadius="20">
+                        <Image Aspect="AspectFit"
+                               Source="{Binding Image2}" />
+                    </Frame>
+
+                    <!-- Image num 3 -->
+                    <Frame Grid.Column="2"
+                           Padding="12"
+                           BackgroundColor="{StaticResource ImageBackgroundColor}"
+                           CornerRadius="20">
+                        <Image Aspect="AspectFit"
+                               Source="{Binding Image3}" />
+                    </Frame>
+                </Grid>
+
+                <!-- Color & Number -->
+                <Grid Grid.Row="4"
+                      Grid.ColumnSpan="2"
+                      Margin="0,4"
+                      ColumnDefinitions="50*,50*">
+
+                    <!-- Color -->
+                    <CollectionView Grid.Column="0"
+                                    HeightRequest="30"
+                                    ItemsSource="{Binding ColorList}"
+                                    SelectedItem="{Binding SelectedColor, Mode=TwoWay}"
+                                    SelectionMode="Single">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="6"
+                                               Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="4"
+                                       xct:TouchEffect.NativeAnimation="True"
+                                       BackgroundColor="{Binding .}"
+                                       CornerRadius="50"
+                                       WidthRequest="30">
+                                    <Label x:Name="CheckLabel"
+                                           FontFamily="FontAwesomeSolid"
+                                           FontSize="14"
+                                           HorizontalOptions="Center"
+                                           IsVisible="False"
+                                           Text="{x:Static helpers:FontAwesomeIcons.Check}"
+                                           TextColor="{StaticResource SecondaryColor}"
+                                           VerticalOptions="Center" />
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="CommonStates">
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{Binding .}" />
+                                                    <Setter TargetName="CheckLabel" Property="Label.IsVisible" Value="True" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{Binding .}" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <!-- Number -->
+                    <Frame Grid.Column="1"
+                           Padding="6"
+                           BackgroundColor="{StaticResource ImageBackgroundColor}"
+                           CornerRadius="24"
+                           HorizontalOptions="End"
+                           VerticalOptions="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Margin="6,0"
+                                   FontFamily="FontAwesomeSolid"
+                                   FontSize="20"
+                                   HorizontalOptions="Center"
+                                   Text="{x:Static helpers:FontAwesomeIcons.Minus}"
+                                   TextColor="{StaticResource PlaceholderColor}"
+                                   VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeNumberCommand}"
+                                                          CommandParameter="dec"
+                                                          NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label Margin="6,0,6,0"
+                                   FontFamily="OpenSansSemiBold"
+                                   FontSize="16"
+                                   Text="{Binding Number}"
+                                   TextColor="{StaticResource PlaceholderColor}"
+                                   VerticalOptions="Center" />
+                            <Label Margin="6,0"
+                                   FontFamily="FontAwesomeSolid"
+                                   FontSize="20"
+                                   HorizontalOptions="Center"
+                                   Text="{x:Static helpers:FontAwesomeIcons.Plus}"
+                                   TextColor="{StaticResource PlaceholderColor}"
+                                   VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeNumberCommand}"
+                                                          CommandParameter="inc"
+                                                          NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- Divider -->
+                <BoxView Grid.Row="5"
+                         Grid.ColumnSpan="2"
+                         Margin="0,10"
+                         HeightRequest="1"
+                         Color="{StaticResource ImageBackgroundColor}" />
+
+                <!-- Price -->
+                <Label Grid.Row="6"
+                       Grid.Column="0"
+                       Margin="0,0,0,10"
+                       FontFamily="OpenSansBold"
+                       FontSize="26"
+                       HorizontalOptions="CenterAndExpand"
+                       Text="{Binding FurnitureItem.Price, StringFormat='{0:C}'}"
+                       VerticalOptions="Center" />
+
+                <!-- Buy button -->
+                <Button Grid.Row="6"
+                        Grid.Column="1"
+                        Margin="0,0,0,10"
+                        Padding="20,0"
+                        BackgroundColor="{StaticResource LightButtonBackgoundColor}"
+                        CornerRadius="24"
+                        FontFamily="OpenSansSemiBold"
+                        FontSize="14"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Buy now"
+                        VerticalOptions="Center" />
+
+            </Grid>
+        </Frame>
+
+    </Grid>
+
+</ContentPage>

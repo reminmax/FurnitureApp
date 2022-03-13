@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary x:Class="FurnitureApp.Styles.Theme"
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:androidSpecific="clr-namespace:Xamarin.CommunityToolkit.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.CommunityToolkit"
+                    xmlns:effects="http://xamarin.com/schemas/2020/toolkit"
+                    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                    xmlns:styles="clr-namespace:FurnitureApp.Styles">
+
+    <ResourceDictionary.MergedDictionaries>
+        <styles:Colors />
+        <styles:Fonts />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- CornerRadius -->
+    <OnPlatform x:Key="CornerRadius"
+                x:TypeArguments="x:Single">
+        <On Platform="Android"
+            Value="18" />
+        <On Platform="iOS"
+            Value="24" />
+    </OnPlatform>
+
+    <!-- Grid -->
+    <Style TargetType="Grid">
+        <Setter Property="RowSpacing" Value="0" />
+        <Setter Property="ColumnSpacing" Value="0" />
+    </Style>
+
+    <!-- Frame -->
+    <Style TargetType="Frame">
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <!-- StackLayout -->
+    <Style TargetType="StackLayout">
+        <Setter Property="Spacing" Value="0" />
+    </Style>
+
+    <!-- Label -->
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+    </Style>
+
+    <!-- Button -->
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}" />
+        <Setter Property="TextTransform" Value="None" />
+        <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
+    </Style>
+
+    <Style ApplyToDerivedTypes="True"
+           TargetType="ContentPage">
+        <Setter Property="Background" Value="{StaticResource MainGradient}" />
+        <Setter Property="iOsSpecific:Page.UseSafeArea" Value="True" />
+        <Setter Property="effects:StatusBarEffect.Color" Value="{StaticResource BackgroundColor}" />
+        <Setter Property="effects:StatusBarEffect.Style" Value="DarkContent" />
+        <Setter Property="androidSpecific:NavigationBarEffect.Color" Value="{StaticResource BackgroundColor}" />
+        <Setter Property="androidSpecific:NavigationBarEffect.Style" Value="DarkContent" />
+    </Style>
+
+</ResourceDictionary>
